@@ -9,4 +9,5 @@ public abstract class Character {
         this.lifeLevel = lifeLevel;
         this.strength = strength;
     }
+
 }

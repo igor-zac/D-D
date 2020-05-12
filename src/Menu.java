@@ -224,8 +224,51 @@ public abstract class Menu {
         return false;
     }
 
-
     private static void quittingMessage() {
         System.out.println("I see you do not want to continue...");
     }
+
+    public static void startGame() {
+        boolean keepPlaying = false;
+        int nbOfCases = 64;
+        int currentCase;
+        int diceResult;
+
+        do {
+          currentCase = 1;
+
+          while(currentCase < 64){
+              diceResult = diceRoll();
+              System.out.println("Rolled dice: " + diceResult);
+
+              if (currentCase + diceResult > 64){
+                  System.out.println("You went too far, you have to start again!");
+                  currentCase = 1;
+              } else {
+                  currentCase += diceResult;
+              }
+
+              System.out.println("Current case: " + currentCase + "/" + nbOfCases);
+          }
+
+          System.out.println("Congratulations, you did it!" +
+                  "\n\nDo you want to play again? (Y/n)");
+
+          Scanner sc = new Scanner(System.in);
+          String userInput = sc.nextLine();
+
+          if(userInput.toLowerCase().equals("y") && userInput.toLowerCase().equals("yes")){
+              keepPlaying = true;
+          } else if (!userInput.toLowerCase().equals("n") && !userInput.toLowerCase().equals("no")){
+              System.out.println("Fuck it, I don't wanna take every option into account before refactoring.");
+          }
+
+        } while(keepPlaying);
+    }
+
+    private static int diceRoll(){
+        return (int) Math.ceil(Math.random() * 6);
+    }
+
+
 }
