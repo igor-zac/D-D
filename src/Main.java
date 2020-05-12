@@ -4,8 +4,9 @@ public class Main {
 
     public static void main(String[] args){
         gameStart();
-        Menu.createCharacter();
-        Menu.startGame();
+        Menu menu = new Menu();
+        menu.createCharacter();
+        menu.startGame();
         gameEnd();
     }
 

@@ -1,22 +1,22 @@
 import java.util.Scanner;
 
-public abstract class Menu {
+public class Menu {
 
-    final private static String[] confirmOptions = {"y", "yes"};
-    final private static String[] declineOptions = {"n", "no"};
-    final private static String[] exitOptions = {"q", "quit", "exit"};
-    final private static String[] displayOptions = {"show"};
+    final private String[] confirmOptions = {"y", "yes"};
+    final private String[] declineOptions = {"n", "no"};
+    final private String[] exitOptions = {"q", "quit", "exit"};
+    final private String[] displayOptions = {"show"};
 
-    final private static String[] possibleCharacters = {"Warrior", "Magician"};
+    final private String[] possibleCharacters = {"Warrior", "Magician"};
 
-    final private static String[] characterOptions = {"Character Choice", "Name", "Life Level", "Strength"};
-    private static Warrior[] warrior = new Warrior[1];
-    private static Magician[] magician = new Magician[1];
-    private static String[] playerChoices;
-    private static boolean isQuitting;
+    final private String[] characterOptions = {"Character Choice", "Name", "Life Level", "Strength"};
+    private Warrior[] warrior = new Warrior[1];
+    private Magician[] magician = new Magician[1];
+    private String[] playerChoices;
+    private boolean isQuitting;
 
 
-    public static void createCharacter() {
+    public void createCharacter() {
         Scanner scanner = new Scanner(System.in);
         boolean confirmCharacter = false;
         String userInput;
@@ -70,7 +70,7 @@ public abstract class Menu {
         System.out.println(magician);
     }
 
-    private static void chooseOption(Scanner scanner, int optionIndex) {
+    private void chooseOption(Scanner scanner, int optionIndex) {
         String option = characterOptions[optionIndex];
         choiceStart(option);
 
@@ -103,7 +103,7 @@ public abstract class Menu {
         }
     }
 
-    private static void choiceStart(String option) {
+    private void choiceStart(String option) {
         switch (option) {
             case "Character Choice":
                 System.out.println("Are you: \n1 - A warrior\n2 - A magician\n\n" +
@@ -135,7 +135,7 @@ public abstract class Menu {
         }
     }
 
-    private static boolean isInputValid(String option, String userInput) {
+    private boolean isInputValid(String option, String userInput) {
 
         switch (option) {
             case "Character Choice":
@@ -200,7 +200,7 @@ public abstract class Menu {
         return false;
     }
 
-    private static boolean wantsRecap(String userInput) {
+    private boolean wantsRecap(String userInput) {
         for (String option : displayOptions) {
             if (userInput.toLowerCase().equals(option)) {
                 return true;
@@ -209,13 +209,13 @@ public abstract class Menu {
         return false;
     }
 
-    private static void displayRecap() {
+    private void displayRecap() {
         for (int i = 0; i < characterOptions.length; i++) {
             System.out.println(characterOptions[i] + " : " + (playerChoices[i] == null ? "" : playerChoices[i]));
         }
     }
 
-    private static boolean wantsToQuit(String userInput) {
+    private boolean wantsToQuit(String userInput) {
         for (String option : exitOptions) {
             if (userInput.toLowerCase().equals(option)) {
                 return true;
@@ -224,11 +224,11 @@ public abstract class Menu {
         return false;
     }
 
-    private static void quittingMessage() {
+    private void quittingMessage() {
         System.out.println("I see you do not want to continue...");
     }
 
-    public static void startGame() {
+    public void startGame() {
         boolean keepPlaying = false;
         int nbOfCases = 64;
         int currentCase;
@@ -266,7 +266,7 @@ public abstract class Menu {
         } while(keepPlaying);
     }
 
-    private static int diceRoll(){
+    private int diceRoll(){
         return (int) Math.ceil(Math.random() * 6);
     }
 
