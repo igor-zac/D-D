@@ -1,3 +1,7 @@
+import characters.Character;
+import characters.Magician;
+import characters.Warrior;
+
 import java.util.Scanner;
 
 public class Menu {
@@ -10,8 +14,7 @@ public class Menu {
     final private String[] possibleCharacters = {"Warrior", "Magician"};
 
     final private String[] characterOptions = {"Character Choice", "Name", "Life Level", "Strength"};
-    private Warrior[] warrior = new Warrior[1];
-    private Magician[] magician = new Magician[1];
+    private Character character;
     private String[] playerChoices;
     private boolean isQuitting;
 
@@ -60,14 +63,10 @@ public class Menu {
 
 
         if (playerChoices[0].equals("Warrior")) {
-            warrior[0] = new Warrior(playerChoices[1], Integer.parseInt(playerChoices[2]), Integer.parseInt(playerChoices[3]));
+            character = new Warrior(playerChoices[1], Integer.parseInt(playerChoices[2]), Integer.parseInt(playerChoices[3]));
         } else {
-            magician[0] = new Magician(playerChoices[1], Integer.parseInt(playerChoices[2]), Integer.parseInt(playerChoices[3]));
+            character = new Magician(playerChoices[1], Integer.parseInt(playerChoices[2]), Integer.parseInt(playerChoices[3]));
         }
-
-
-        System.out.println(warrior);
-        System.out.println(magician);
     }
 
     private void chooseOption(Scanner scanner, int optionIndex) {

@@ -1,31 +1,29 @@
-public class Weapon {
+package equipments;
 
-    private String name;
-    private int strength;
+public abstract class OffensiveEquipment extends Equipment{
+
+    protected int strength;
 
     // CONSTRUCTORS ===================================================================================================
 
-    public Weapon(String name, int strength){
-        this.name = name;
+    protected OffensiveEquipment(String type, String name, int strength){
+        super(type, name);
         this.strength = strength;
     }
 
     // TO_STRING ======================================================================================================
 
     public String toString(){
-        String weaponDescription = "Weapon's name: " + name +
-                "\nStrength: " + strength;
+        String description = "Name: " + this.name +
+                "\nStrength: " + this.strength;
 
-        return weaponDescription;
+        return description;
     }
 
     // GETTERS ========================================================================================================
 
-    public String getName(){
-        return name;
+    public int getStrength(){
+        return this.strength;
     }
 
-    public int getStrength(){
-        return strength;
-    }
 }
