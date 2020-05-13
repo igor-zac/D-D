@@ -1,7 +1,8 @@
-package com.caca.characters;
+package com.D_D.characters;
 
-import com.caca.equipments.DefensiveEquipment;
-import com.caca.equipments.OffensiveEquipment;
+import com.D_D.equipments.defense.DefensiveEquipment;
+import com.D_D.equipments.offense.OffensiveEquipment;
+
 
 public abstract class Character {
 
@@ -11,9 +12,6 @@ public abstract class Character {
 
     protected OffensiveEquipment offensiveEquipment;
     protected DefensiveEquipment defensiveEquipment;
-
-
-    protected String CHARACTER_TYPE;
 
     // CONSTRUCTORS ===================================================================================================
 
@@ -83,13 +81,25 @@ public abstract class Character {
         this.name = name;
     }
 
-    public abstract void setStrength(int strength);
+    public void setStrength(int strength){
+        if (strength > 0){
+            this.strength = strength;
+        }
+    }
 
-    public abstract void setLifeLevel(int lifeLevel);
+    public void setLifeLevel(int lifeLevel){
+        if (lifeLevel > 0){
+            this.lifeLevel = lifeLevel;
+        }
+    }
 
     // CUSTOM METHODS =================================================================================================
 
-    public abstract void gainLife(int lifeGained);
+    public void gainLife(int lifeGained){
+        this.lifeLevel += lifeGained;
+    }
 
-    public abstract void loseLife(int lifeLost);
+    public void loseLife(int lifeLost){
+        this.lifeLevel -= lifeLost;
+    }
 }

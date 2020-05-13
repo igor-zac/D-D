@@ -1,7 +1,8 @@
-package com.caca.characters;
+package com.D_D.characters;
 
-import com.caca.equipments.Weapon;
-import com.caca.equipments.Shield;
+import com.D_D.equipments.offense.Weapon;
+import com.D_D.equipments.defense.Shield;
+
 
 public class Warrior extends Character {
 
@@ -35,6 +36,7 @@ public class Warrior extends Character {
         super.setDefensiveEquipment(shield);
     }
 
+    @Override
     public void setStrength(int strength){
         if (strength >= Warrior.MIN_STRENGTH && strength <= Warrior.MAX_STRENGTH){
             this.strength = strength;
@@ -45,6 +47,7 @@ public class Warrior extends Character {
         }
     }
 
+    @Override
     public void setLifeLevel(int lifeLevel) {
         if (lifeLevel >= Warrior.MIN_LIFE && lifeLevel <= Warrior.MAX_LIFE){
             this.lifeLevel = lifeLevel;
@@ -58,6 +61,7 @@ public class Warrior extends Character {
 
     // CUSTOM METHODS =================================================================================================
 
+    @Override
     public void gainLife(int lifeGained){
         if (this.lifeLevel + lifeGained > Warrior.MAX_LIFE){
             this.lifeLevel = Warrior.MAX_LIFE;
@@ -67,6 +71,7 @@ public class Warrior extends Character {
 
     }
 
+    @Override
     public void loseLife(int lifeLost){
         if (this.lifeLevel - lifeLost < Warrior.MIN_LIFE){
             this.lifeLevel = Warrior.MIN_LIFE;

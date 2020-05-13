@@ -1,7 +1,8 @@
-package com.caca.characters;
+package com.D_D.characters;
 
-import com.caca.equipments.Spell;
-import com.caca.equipments.Philter;
+import com.D_D.equipments.offense.Spell;
+import com.D_D.equipments.defense.Philter;
+
 
 public class Magician extends Character {
 
@@ -35,6 +36,7 @@ public class Magician extends Character {
         super.setDefensiveEquipment(philter);
     }
 
+    @Override
     public void setStrength(int strength){
         if (strength >= Magician.MIN_STRENGTH && strength <= Magician.MAX_STRENGTH){
             this.strength = strength;
@@ -45,6 +47,7 @@ public class Magician extends Character {
         }
     }
 
+    @Override
     public void setLifeLevel(int lifeLevel) {
         if (lifeLevel >= Magician.MIN_LIFE && lifeLevel <= Magician.MAX_LIFE){
             this.lifeLevel = lifeLevel;
@@ -58,6 +61,7 @@ public class Magician extends Character {
 
     // CUSTOM METHODS =================================================================================================
 
+    @Override
     public void gainLife(int lifeGained){
         if (this.lifeLevel + lifeGained > Magician.MAX_LIFE){
             this.lifeLevel = Magician.MAX_LIFE;
@@ -67,6 +71,7 @@ public class Magician extends Character {
 
     }
 
+    @Override
     public void loseLife(int lifeLost){
         if (this.lifeLevel - lifeLost < Magician.MIN_LIFE){
             this.lifeLevel = Magician.MIN_LIFE;
