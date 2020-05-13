@@ -1,3 +1,5 @@
+package com.caca;
+
 public class Main {
 
     private boolean playing = true;

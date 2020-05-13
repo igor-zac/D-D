@@ -1,4 +1,4 @@
-package equipments;
+package com.caca.equipments;
 
 abstract class Equipment {
 

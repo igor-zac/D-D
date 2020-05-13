@@ -1,4 +1,4 @@
-package equipments;
+package com.D_D.equipments;
 
 public abstract class OffensiveEquipment extends Equipment{
 

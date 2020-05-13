@@ -1,17 +1,17 @@
-package equipments;
+package com.D_D.equipments;
 
 public class Spell extends OffensiveEquipment{
 
     // CONSTRUCTORS ===================================================================================================
 
     public Spell(String name, int strength){
-        super("equipments.Spell", name, strength);
+        super("Spell", name, strength);
     }
 
     // TO_STRING ======================================================================================================
 
     public String toString(){
-        String description = "Type: equipments.Spell\n" + super.toString();
+        String description = "Type: Spell\n" + super.toString();
 
         return description;
     }

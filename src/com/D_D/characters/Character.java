@@ -1,8 +1,7 @@
-package characters;
+package com.caca.characters;
 
-import equipments.DefensiveEquipment;
-import equipments.OffensiveEquipment;
-
+import com.caca.equipments.DefensiveEquipment;
+import com.caca.equipments.OffensiveEquipment;
 
 public abstract class Character {
 
@@ -13,11 +12,13 @@ public abstract class Character {
     protected OffensiveEquipment offensiveEquipment;
     protected DefensiveEquipment defensiveEquipment;
 
-    protected String characterType;
+
+    protected String CHARACTER_TYPE;
 
     // CONSTRUCTORS ===================================================================================================
 
     protected Character(String name, int lifeLevel, int strength){
+
         this.name = name;
         this.lifeLevel = lifeLevel;
         this.strength = strength;
@@ -26,7 +27,7 @@ public abstract class Character {
     // TO_STRING ======================================================================================================
 
     public String toString(){
-        String magicianDescription = "characters.Character of type " + this.characterType + ".\nCurrent life level:" +
+        String magicianDescription = "Character of type " + this.getClass().getSimpleName() + ".\nCurrent life level:" +
                 lifeLevel + "\nStrength: " + strength;
 
         if(offensiveEquipment != null) {
@@ -78,15 +79,17 @@ public abstract class Character {
         this.defensiveEquipment = defensiveEquipment;
     }
 
-    public void setLifeLevel(int lifeLevel) {
-        this.lifeLevel = lifeLevel;
+    public void setName(String name){
+        this.name = name;
     }
 
-    public void addLife(int lifeToAdd){
-        this.lifeLevel += lifeToAdd;
-    }
+    public abstract void setStrength(int strength);
 
-    public void loseLife(int lifeLost){
-        this.lifeLevel -= lifeLost;
-    }
+    public abstract void setLifeLevel(int lifeLevel);
+
+    // CUSTOM METHODS =================================================================================================
+
+    public abstract void gainLife(int lifeGained);
+
+    public abstract void loseLife(int lifeLost);
 }

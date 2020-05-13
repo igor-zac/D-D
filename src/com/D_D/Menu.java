@@ -1,6 +1,8 @@
-import characters.Character;
-import characters.Magician;
-import characters.Warrior;
+package com.caca;
+
+import com.caca.characters.Character;
+import com.caca.characters.Magician;
+import com.caca.characters.Warrior;
 
 import java.util.Scanner;
 
@@ -116,18 +118,18 @@ public class Menu {
             case "Life Level":
                 System.out.print("What is your current life level?\nAnd don't try to fool me, I know you are a ");
                 if (playerChoices[0].equals("Warrior")) {
-                    System.out.println("Warrior, so it must be between 5 and 10!");
+                    System.out.println("Warrior, so it must be between " + Warrior.MIN_LIFE + " and " + Warrior.MAX_LIFE + "!");
                 } else {
-                    System.out.println("Magician, so it must be between 3 and 6!");
+                    System.out.println("Magician, so it must be between " + Magician.MIN_LIFE + " and " + Magician.MAX_LIFE + "!");
                 }
                 break;
 
             case "Strength":
                 System.out.print("What is your strength?\nAgain, don't lie to me, it must be between ");
                 if (playerChoices[0].equals("Warrior")) {
-                    System.out.println("5 and 10.");
+                    System.out.println(Warrior.MIN_STRENGTH + " and " + Warrior.MAX_STRENGTH + ".");
                 } else {
-                    System.out.println("8 and 15.");
+                    System.out.println(Magician.MIN_STRENGTH + " and " + Magician.MAX_STRENGTH + ".");
                 }
                 break;
 
@@ -269,7 +271,7 @@ public class Menu {
         return (int) Math.ceil(Math.random() * 6);
     }
 
-    private int move(int nbOfCases, int currentCase, int diceResult) throws CharacterOutOfBoardException{
+    private int move(int nbOfCases, int currentCase, int diceResult) throws CharacterOutOfBoardException {
         if(currentCase + diceResult > nbOfCases){
             throw new CharacterOutOfBoardException();
         } else {
