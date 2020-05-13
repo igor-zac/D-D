@@ -1,4 +1,4 @@
-package com.D_D.equipments;
+package com.D_D.equipments.offense;
 
 public class Weapon extends OffensiveEquipment{
 

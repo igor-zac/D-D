@@ -1,6 +1,8 @@
-package com.D_D.equipments;
+package com.D_D.equipments.defense;
 
-public abstract class DefensiveEquipment extends Equipment{
+import com.D_D.equipments.Equipment;
+
+public abstract class DefensiveEquipment extends Equipment {
 
     protected DefensiveEquipment(String type, String name){
         super(type, name);

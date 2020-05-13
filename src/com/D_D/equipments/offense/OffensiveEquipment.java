@@ -1,6 +1,8 @@
-package com.D_D.equipments;
+package com.D_D.equipments.offense;
 
-public abstract class OffensiveEquipment extends Equipment{
+import com.D_D.equipments.Equipment;
+
+public abstract class OffensiveEquipment extends Equipment {
 
     protected int strength;
 

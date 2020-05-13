@@ -1,6 +1,6 @@
-package com.caca.equipments;
+package com.D_D.equipments;
 
-abstract class Equipment {
+public abstract class Equipment {
 
     protected String name;
     protected String type;
