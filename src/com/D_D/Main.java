@@ -1,4 +1,5 @@
-package com.caca;
+package com.D_D;
+
 
 public class Main {
 
@@ -6,9 +7,11 @@ public class Main {
 
     public static void main(String[] args){
         gameStart();
+
         Menu menu = new Menu();
         menu.createCharacter();
         menu.startGame();
+
         gameEnd();
     }
 
