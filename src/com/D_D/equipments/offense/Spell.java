@@ -8,11 +8,4 @@ public class Spell extends OffensiveEquipment{
         super("Spell", name, strength);
     }
 
-    // TO_STRING ======================================================================================================
-
-    public String toString(){
-        String description = "Type: Spell\n" + super.toString();
-
-        return description;
-    }
 }

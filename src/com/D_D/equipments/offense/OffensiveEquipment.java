@@ -16,7 +16,8 @@ public abstract class OffensiveEquipment extends Equipment {
     // TO_STRING ======================================================================================================
 
     public String toString(){
-        String description = "Name: " + this.name +
+        String description = "Type: " + this.getClass().getSimpleName() +
+                "\nName: " + this.name +
                 "\nStrength: " + this.strength;
 
         return description;

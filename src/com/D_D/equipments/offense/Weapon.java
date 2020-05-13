@@ -8,11 +8,4 @@ public class Weapon extends OffensiveEquipment{
         super("Weapon", name, strength);
     }
 
-    // TO_STRING ======================================================================================================
-
-    public String toString(){
-        String description = "Type: Weapon\n" + super.toString();
-
-        return description;
-    }
 }
