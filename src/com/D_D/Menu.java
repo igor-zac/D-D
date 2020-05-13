@@ -1,10 +1,11 @@
-package com.caca;
+package com.D_D;
 
-import com.caca.characters.Character;
-import com.caca.characters.Magician;
-import com.caca.characters.Warrior;
+import com.D_D.characters.Character;
+import com.D_D.characters.Magician;
+import com.D_D.characters.Warrior;
 
 import java.util.Scanner;
+
 
 public class Menu {
 
@@ -245,7 +246,7 @@ public class Menu {
               try {
                   currentCase = move(nbOfCases, currentCase, diceResult);
               } catch (CharacterOutOfBoardException cob){
-                  System.out.println("You went too far, you have to start again!");
+                  System.out.println(cob.getMessage());
                   currentCase = 1;
               }
 
@@ -263,6 +264,8 @@ public class Menu {
           } else if (!userInput.toLowerCase().equals("n") && !userInput.toLowerCase().equals("no")){
               System.out.println("Fuck it, I don't wanna take every option into account before refactoring.");
           }
+
+          keepPlaying = false;
 
         } while(keepPlaying);
     }
