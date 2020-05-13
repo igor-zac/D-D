@@ -236,15 +236,15 @@ public class Menu {
         do {
           currentCase = 1;
 
-          while(currentCase < 64){
+          while(currentCase < nbOfCases){
               diceResult = diceRoll();
               System.out.println("Rolled dice: " + diceResult);
 
-              if (currentCase + diceResult > 64){
+              try {
+                  currentCase = move(nbOfCases, currentCase, diceResult);
+              } catch (CharacterOutOfBoardException cob){
                   System.out.println("You went too far, you have to start again!");
                   currentCase = 1;
-              } else {
-                  currentCase += diceResult;
               }
 
               System.out.println("Current case: " + currentCase + "/" + nbOfCases);
@@ -256,7 +256,7 @@ public class Menu {
           Scanner sc = new Scanner(System.in);
           String userInput = sc.nextLine();
 
-          if(userInput.toLowerCase().equals("y") && userInput.toLowerCase().equals("yes")){
+          if(userInput.toLowerCase().equals("y") || userInput.toLowerCase().equals("yes")){
               keepPlaying = true;
           } else if (!userInput.toLowerCase().equals("n") && !userInput.toLowerCase().equals("no")){
               System.out.println("Fuck it, I don't wanna take every option into account before refactoring.");
@@ -267,6 +267,14 @@ public class Menu {
 
     private int diceRoll(){
         return (int) Math.ceil(Math.random() * 6);
+    }
+
+    private int move(int nbOfCases, int currentCase, int diceResult) throws CharacterOutOfBoardException{
+        if(currentCase + diceResult > nbOfCases){
+            throw new CharacterOutOfBoardException();
+        } else {
+            return currentCase + diceResult;
+        }
     }
 
 
