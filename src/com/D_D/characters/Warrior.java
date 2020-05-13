@@ -15,11 +15,11 @@ public class Warrior extends Character {
     // CONSTRUCTORS ===================================================================================================
 
     public Warrior(){
-        super("", Warrior.MIN_LIFE, Warrior.MIN_STRENGTH);
+        this("", Warrior.MIN_LIFE, Warrior.MIN_STRENGTH);
     }
 
     public Warrior(String name){
-        super(name, Warrior.MIN_LIFE, Warrior.MIN_STRENGTH);
+        this(name, Warrior.MIN_LIFE, Warrior.MIN_STRENGTH);
     }
 
     public Warrior(String name, int lifeLevel, int strength){

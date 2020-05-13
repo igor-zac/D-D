@@ -15,11 +15,11 @@ public class Magician extends Character {
     // CONSTRUCTORS ===================================================================================================
 
     public Magician(){
-        super("", Magician.MIN_LIFE, Magician.MIN_STRENGTH);
+        this("", Magician.MIN_LIFE, Magician.MIN_STRENGTH);
     }
 
     public Magician(String name){
-        super(name, Magician.MIN_LIFE, Magician.MIN_STRENGTH);
+        this(name, Magician.MIN_LIFE, Magician.MIN_STRENGTH);
     }
 
     public Magician(String name, int lifeLevel, int strength){
