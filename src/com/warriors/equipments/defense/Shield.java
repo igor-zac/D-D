@@ -1,4 +1,4 @@
-package com.D_D.equipments.defense;
+package com.warriors.equipments.defense;
 
 public class Shield extends DefensiveEquipment{
 

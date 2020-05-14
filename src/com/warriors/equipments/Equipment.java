@@ -1,4 +1,4 @@
-package com.D_D.equipments;
+package com.warriors.equipments;
 
 public abstract class Equipment {
 

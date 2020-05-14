@@ -1,4 +1,4 @@
-package com.D_D.equipments.offense;
+package com.warriors.equipments.offense;
 
 public class Spell extends OffensiveEquipment{
 

@@ -1,8 +1,8 @@
-package com.D_D;
+package com.warriors;
 
-import com.D_D.characters.Character;
-import com.D_D.characters.Magician;
-import com.D_D.characters.Warrior;
+import com.warriors.characters.Character;
+import com.warriors.characters.Magician;
+import com.warriors.characters.Warrior;
 
 import java.util.Scanner;
 

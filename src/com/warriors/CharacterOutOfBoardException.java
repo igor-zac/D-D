@@ -1,4 +1,4 @@
-package com.D_D;
+package com.warriors;
 
 public class CharacterOutOfBoardException extends Exception{
 

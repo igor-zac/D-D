@@ -1,6 +1,6 @@
-package com.D_D.equipments.defense;
+package com.warriors.equipments.defense;
 
-import com.D_D.equipments.Equipment;
+import com.warriors.equipments.Equipment;
 
 public abstract class DefensiveEquipment extends Equipment {
 
