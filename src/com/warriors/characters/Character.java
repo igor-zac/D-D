@@ -1,14 +1,23 @@
-package com.D_D.characters;
+package com.warriors.characters;
 
-import com.D_D.equipments.defense.DefensiveEquipment;
-import com.D_D.equipments.offense.OffensiveEquipment;
+import com.warriors.equipments.defense.DefensiveEquipment;
+import com.warriors.equipments.offense.OffensiveEquipment;
 
+import java.util.Hashtable;
 
 public abstract class Character {
 
-    protected String name;
-    protected int lifeLevel;
-    protected int strength;
+    private static int characterId = 1;
+    public static final String[] characterAttributes = {"name", "lifeLevel", "strength"};
+
+
+    private int playerId;
+
+    protected Hashtable<String,Object> data = new Hashtable<String,Object>();
+
+//    protected String name;
+//    protected int lifeLevel;
+//    protected int strength;
 
     protected OffensiveEquipment offensiveEquipment;
     protected DefensiveEquipment defensiveEquipment;
@@ -17,16 +26,23 @@ public abstract class Character {
 
     protected Character(String name, int lifeLevel, int strength){
 
-        this.name = name;
-        this.lifeLevel = lifeLevel;
-        this.strength = strength;
+        this.playerId = Character.characterId;
+        Character.characterId += 1;
+
+        this.data.put(characterAttributes[0], name);
+        this.data.put(characterAttributes[1], lifeLevel);
+        this.data.put(characterAttributes[2], strength);
+
+//        this.name = name;
+//        this.lifeLevel = lifeLevel;
+//        this.strength = strength;
     }
 
     // TO_STRING ======================================================================================================
 
     public String toString(){
         String magicianDescription = "Character of type " + this.getClass().getSimpleName() + ".\nCurrent life level:" +
-                lifeLevel + "\nStrength: " + strength;
+                data.get("lifeLevel") + "\nStrength: " + data.get("strength");
 
         if(offensiveEquipment != null) {
             magicianDescription += "\n" + this.offensiveEquipment.getType() + "\n    -Name: " +
@@ -47,16 +63,20 @@ public abstract class Character {
 
     // GETTERS ========================================================================================================
 
+    public int getPlayerId(){
+        return this.playerId;
+    }
+
     public String getName(){
-        return this.name;
+        return (String)this.data.get("name");
     }
 
     public int getLifeLevel(){
-        return this.lifeLevel;
+        return (int)this.data.get("lifeLevel");
     }
 
     public int getStrength(){
-        return this.strength;
+        return (int)this.data.get("strength");
     }
 
     public OffensiveEquipment getOffensiveEquipment() {
@@ -78,28 +98,34 @@ public abstract class Character {
     }
 
     public void setName(String name){
-        this.name = name;
+        this.data.put("name", name);
     }
 
     public void setStrength(int strength){
         if (strength > 0){
-            this.strength = strength;
+//            this.strength = strength;
+            this.data.replace("strength", strength);
         }
     }
 
     public void setLifeLevel(int lifeLevel){
         if (lifeLevel > 0){
-            this.lifeLevel = lifeLevel;
+//            this.lifeLevel = lifeLevel;
+            this.data.replace("lifeLevel", lifeLevel);
         }
     }
 
     // CUSTOM METHODS =================================================================================================
 
     public void gainLife(int lifeGained){
-        this.lifeLevel += lifeGained;
+       int characterLifeLevel = (int)this.data.get("lifeLevel");
+       characterLifeLevel += lifeGained;
+       this.data.replace("lifeLevel", characterLifeLevel);
     }
 
     public void loseLife(int lifeLost){
-        this.lifeLevel -= lifeLost;
+        int characterLifeLevel = (int)this.data.get("lifeLevel");
+        characterLifeLevel -= lifeLost;
+        this.data.replace("lifeLevel", characterLifeLevel);
     }
 }

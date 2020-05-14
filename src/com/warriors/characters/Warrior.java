@@ -1,7 +1,7 @@
-package com.D_D.characters;
+package com.warriors.characters;
 
-import com.D_D.equipments.offense.Weapon;
-import com.D_D.equipments.defense.Shield;
+import com.warriors.equipments.offense.Weapon;
+import com.warriors.equipments.defense.Shield;
 
 
 public class Warrior extends Character {
@@ -38,24 +38,33 @@ public class Warrior extends Character {
 
     @Override
     public void setStrength(int strength){
+        int characterStrength = (int)this.data.get("strength");
+
         if (strength >= Warrior.MIN_STRENGTH && strength <= Warrior.MAX_STRENGTH){
-            this.strength = strength;
+            characterStrength = strength;
         } else if (strength < Warrior.MIN_STRENGTH) {
-            this.strength = Warrior.MIN_STRENGTH;
+            characterStrength = Warrior.MIN_STRENGTH;
         } else {
-            this.strength = Warrior.MAX_STRENGTH;
+            characterStrength = Warrior.MAX_STRENGTH;
         }
+
+        this.data.replace("strength", characterStrength);
+
     }
 
     @Override
     public void setLifeLevel(int lifeLevel) {
+        int characterLifeLevel = (int)this.data.get("lifeLevel");
+
         if (lifeLevel >= Warrior.MIN_LIFE && lifeLevel <= Warrior.MAX_LIFE){
-            this.lifeLevel = lifeLevel;
+            characterLifeLevel = lifeLevel;
         } else if (lifeLevel < Warrior.MIN_LIFE) {
-            this.lifeLevel = Warrior.MIN_LIFE;
+            characterLifeLevel = Warrior.MIN_LIFE;
         } else {
-            this.lifeLevel = Warrior.MAX_LIFE;
+            characterLifeLevel = Warrior.MAX_LIFE;
         }
+
+        this.data.replace("lifeLevel", characterLifeLevel);
 
     }
 
@@ -63,21 +72,29 @@ public class Warrior extends Character {
 
     @Override
     public void gainLife(int lifeGained){
-        if (this.lifeLevel + lifeGained > Warrior.MAX_LIFE){
-            this.lifeLevel = Warrior.MAX_LIFE;
+        int characterLifeLevel = (int)this.data.get("lifeLevel");
+
+        if (characterLifeLevel + lifeGained > Warrior.MAX_LIFE){
+            characterLifeLevel = Warrior.MAX_LIFE;
         } else {
-            this.lifeLevel += lifeGained;
+            characterLifeLevel += lifeGained;
         }
+
+        this.data.replace("lifeLevel", characterLifeLevel);
 
     }
 
     @Override
     public void loseLife(int lifeLost){
-        if (this.lifeLevel - lifeLost < Warrior.MIN_LIFE){
-            this.lifeLevel = Warrior.MIN_LIFE;
+        int characterLifeLevel = (int)this.data.get("lifeLevel");
+
+        if (characterLifeLevel - lifeLost < Warrior.MIN_LIFE){
+            characterLifeLevel = Warrior.MIN_LIFE;
         } else {
-            this.lifeLevel -= lifeLost;
+            characterLifeLevel -= lifeLost;
         }
+
+        this.data.replace("lifeLevel", characterLifeLevel);
 
     }
 

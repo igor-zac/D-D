@@ -1,7 +1,7 @@
-package com.D_D.characters;
+package com.warriors.characters;
 
-import com.D_D.equipments.offense.Spell;
-import com.D_D.equipments.defense.Philter;
+import com.warriors.equipments.offense.Spell;
+import com.warriors.equipments.defense.Philter;
 
 
 public class Magician extends Character {
@@ -38,24 +38,32 @@ public class Magician extends Character {
 
     @Override
     public void setStrength(int strength){
+        int characterStrength = (int)this.data.get("strength");
+
         if (strength >= Magician.MIN_STRENGTH && strength <= Magician.MAX_STRENGTH){
-            this.strength = strength;
+            characterStrength = strength;
         } else if (strength < Magician.MIN_STRENGTH) {
-            this.strength = Magician.MIN_STRENGTH;
+            characterStrength = Magician.MIN_STRENGTH;
         } else {
-            this.strength = Magician.MAX_STRENGTH;
+            characterStrength = Magician.MAX_STRENGTH;
         }
+
+        this.data.replace("strength", characterStrength);
     }
 
     @Override
     public void setLifeLevel(int lifeLevel) {
+        int characterLifeLevel = (int)this.data.get("lifeLevel");
+
         if (lifeLevel >= Magician.MIN_LIFE && lifeLevel <= Magician.MAX_LIFE){
-            this.lifeLevel = lifeLevel;
+            characterLifeLevel = lifeLevel;
         } else if (lifeLevel < Magician.MIN_LIFE) {
-            this.lifeLevel = Magician.MIN_LIFE;
+            characterLifeLevel = Magician.MIN_LIFE;
         } else {
-            this.lifeLevel = Magician.MAX_LIFE;
+            characterLifeLevel = Magician.MAX_LIFE;
         }
+
+        this.data.replace("lifeLevel", characterLifeLevel);
 
     }
 
@@ -63,21 +71,30 @@ public class Magician extends Character {
 
     @Override
     public void gainLife(int lifeGained){
-        if (this.lifeLevel + lifeGained > Magician.MAX_LIFE){
-            this.lifeLevel = Magician.MAX_LIFE;
+        int characterLifeLevel = (int)this.data.get("lifeLevel");
+
+        if (characterLifeLevel + lifeGained > Magician.MAX_LIFE){
+            characterLifeLevel = Magician.MAX_LIFE;
         } else {
-            this.lifeLevel += lifeGained;
+            characterLifeLevel += lifeGained;
         }
+
+        this.data.replace("lifeLevel", characterLifeLevel);
 
     }
 
     @Override
     public void loseLife(int lifeLost){
-        if (this.lifeLevel - lifeLost < Magician.MIN_LIFE){
-            this.lifeLevel = Magician.MIN_LIFE;
+        int characterLifeLevel = (int)this.data.get("lifeLevel");
+
+        if (characterLifeLevel - lifeLost < Magician.MIN_LIFE){
+            characterLifeLevel = Magician.MIN_LIFE;
         } else {
-            this.lifeLevel -= lifeLost;
+            characterLifeLevel -= lifeLost;
         }
+
+        this.data.replace("lifeLevel", characterLifeLevel);
+
 
     }
 
