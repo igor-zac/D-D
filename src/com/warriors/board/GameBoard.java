@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class GameBoard {
 
-    public static final int NB_OF_SPACES = 64;
+    private final int NB_OF_SPACES = 64;
     private HashMap<Integer, Space> track = new HashMap<Integer, Space>();
 
     private final int[] dragonSpaces = {45, 52, 56, 62};
@@ -49,7 +49,7 @@ public class GameBoard {
     }
 
     private void setupSpaces() {
-        for (int i = 1; i <= GameBoard.NB_OF_SPACES; i++) {
+        for (int i = 1; i <= this.NB_OF_SPACES; i++) {
             Space space = new Space();
             track.put(i, space);
         }
