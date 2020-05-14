@@ -2,7 +2,11 @@ package com.warriors.characters.enemies;
 
 public class EnemyCreator {
 
-    private final String type;
+    private String type;
+
+    public EnemyCreator() {
+
+    }
 
     public EnemyCreator(String type){
         this.type = type;
@@ -19,6 +23,10 @@ public class EnemyCreator {
             default:
                 return null;
         }
+    }
+
+    public void setType(String type){
+        this.type = type;
     }
 
     private Dragon createDragon(){

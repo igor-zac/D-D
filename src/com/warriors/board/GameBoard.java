@@ -56,12 +56,17 @@ public class GameBoard {
     }
 
     private void setupEnemies() {
+        EnemyCreator enemyCreator = new EnemyCreator();
+
         for (String enemyType : enemies.keySet()) {
-            EnemyCreator creator = new EnemyCreator(enemyType);
+
+            enemyCreator.setType(enemyType);
 
             for (int space : enemies.get(enemyType)) {
-                Enemy enemy = creator.create();
+
+                Enemy enemy = enemyCreator.create();
                 track.get(space).setEnemy(enemy);
+
             }
         }
     }
