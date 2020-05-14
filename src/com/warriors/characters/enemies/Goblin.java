@@ -7,7 +7,9 @@ public class Goblin extends Enemy{
     }
 
     public Goblin(int lifeLevel, int strength){
-        super(lifeLevel, strength);
+        super();
+        this.setLifeLevel(lifeLevel);
+        this.setStrength(strength);
     }
 
 }

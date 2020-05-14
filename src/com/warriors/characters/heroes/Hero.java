@@ -15,14 +15,12 @@ public abstract class Hero extends Character{
 
     // CONSTRUCTORS ===================================================================================================
 
-    protected Hero(String name, int lifeLevel, int strength){
-
-        super(lifeLevel, strength);
+    protected Hero(String name){
 
         this.id = Hero.heroId;
         Hero.heroId += 1;
 
-        this.data.put("name", name);
+        this.setName(name);
 
     }
 
@@ -70,15 +68,22 @@ public abstract class Hero extends Character{
     // SETTERS ========================================================================================================
 
     public void setOffensiveEquipment(OffensiveEquipment offensiveEquipment){
-        this.offensiveEquipment = offensiveEquipment;
+        if(offensiveEquipment != null){
+            this.offensiveEquipment = offensiveEquipment;
+        }
     }
 
     public void setDefensiveEquipment(DefensiveEquipment defensiveEquipment){
-        this.defensiveEquipment = defensiveEquipment;
+        if(defensiveEquipment != null){
+            this.defensiveEquipment = defensiveEquipment;
+        }
     }
 
     public void setName(String name){
-        this.data.put("name", name);
+        if(name != null){
+            this.data.put("name", name);
+        } else {
+            this.data.put("name", "");
+        }
     }
-
 }

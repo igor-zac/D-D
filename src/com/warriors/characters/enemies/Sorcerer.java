@@ -7,7 +7,9 @@ public class Sorcerer extends Enemy{
     }
 
     public Sorcerer(int lifeLevel, int strength){
-        super(lifeLevel, strength);
+        super();
+        this.setLifeLevel(lifeLevel);
+        this.setStrength(strength);
     }
 
 }

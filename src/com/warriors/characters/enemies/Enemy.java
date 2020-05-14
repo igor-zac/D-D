@@ -10,9 +10,7 @@ public abstract class Enemy extends Character{
 
     // CONSTRUCTORS ===================================================================================================
 
-    protected Enemy(int lifeLevel, int strength){
-
-        super(lifeLevel, strength);
+    protected Enemy(){
 
         this.id = Enemy.enemyId;
         Enemy.enemyId += 1;

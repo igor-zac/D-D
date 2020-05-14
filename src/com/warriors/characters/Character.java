@@ -6,16 +6,6 @@ public abstract class Character {
 
     protected HashMap<String,Object> data = new HashMap<String,Object>();
 
-
-    // CONSTRUCTORS ===================================================================================================
-
-    protected Character(int lifeLevel, int strength){
-
-        this.data.put("lifeLevel", lifeLevel);
-        this.data.put("strength", strength);
-
-    }
-
     // GETTERS ========================================================================================================
 
     public int getLifeLevel(){
@@ -31,12 +21,16 @@ public abstract class Character {
     public void setStrength(int strength){
         if (strength > 0){
             this.data.replace("strength", strength);
+        } else {
+            this.data.replace("strength", 1);
         }
     }
 
     public void setLifeLevel(int lifeLevel){
         if (lifeLevel > 0){
             this.data.replace("lifeLevel", lifeLevel);
+        } else {
+            this.data.replace("lifeLevel", 1);
         }
     }
 
@@ -53,4 +47,5 @@ public abstract class Character {
         characterLifeLevel -= lifeLost;
         this.data.replace("lifeLevel", characterLifeLevel);
     }
+
 }

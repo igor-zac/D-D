@@ -7,7 +7,9 @@ public class Dragon extends Enemy{
     }
 
     public Dragon(int lifeLevel, int strength){
-        super(lifeLevel, strength);
+        super();
+        this.setLifeLevel(lifeLevel);
+        this.setStrength(strength);
     }
 
 }

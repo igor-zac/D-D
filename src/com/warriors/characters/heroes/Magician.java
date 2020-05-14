@@ -1,6 +1,5 @@
 package com.warriors.characters.heroes;
 
-import com.warriors.characters.Character;
 import com.warriors.equipments.offense.Spell;
 import com.warriors.equipments.defense.Philter;
 
@@ -24,7 +23,9 @@ public class Magician extends Hero {
     }
 
     public Magician(String name, int lifeLevel, int strength){
-        super(name, lifeLevel, strength);
+        super(name);
+        this.setLifeLevel(lifeLevel);
+        this.setStrength(strength);
     }
 
     // SETTERS ========================================================================================================
@@ -39,7 +40,8 @@ public class Magician extends Hero {
 
     @Override
     public void setStrength(int strength){
-        int characterStrength = (int)this.data.get("strength");
+
+        int characterStrength;
 
         if (strength >= Magician.MIN_STRENGTH && strength <= Magician.MAX_STRENGTH){
             characterStrength = strength;
@@ -49,12 +51,18 @@ public class Magician extends Hero {
             characterStrength = Magician.MAX_STRENGTH;
         }
 
-        this.data.replace("strength", characterStrength);
+        if(this.data.containsKey("strength")) {
+            this.data.replace("strength", characterStrength);
+        } else {
+            this.data.put("strength", characterStrength);
+        }
+
     }
 
     @Override
     public void setLifeLevel(int lifeLevel) {
-        int characterLifeLevel = (int)this.data.get("lifeLevel");
+
+        int characterLifeLevel;
 
         if (lifeLevel >= Magician.MIN_LIFE && lifeLevel <= Magician.MAX_LIFE){
             characterLifeLevel = lifeLevel;
@@ -64,7 +72,11 @@ public class Magician extends Hero {
             characterLifeLevel = Magician.MAX_LIFE;
         }
 
-        this.data.replace("lifeLevel", characterLifeLevel);
+        if(this.data.containsKey("lifeLevel")) {
+            this.data.replace("lifeLevel", characterLifeLevel);
+        } else {
+            this.data.put("lifeLevel", characterLifeLevel);
+        }
 
     }
 
