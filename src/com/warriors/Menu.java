@@ -1,8 +1,9 @@
 package com.warriors;
 
+import com.warriors.board.GameBoard;
 import com.warriors.characters.Character;
-import com.warriors.characters.Magician;
-import com.warriors.characters.Warrior;
+import com.warriors.characters.heroes.Magician;
+import com.warriors.characters.heroes.Warrior;
 
 import java.util.Scanner;
 
@@ -232,31 +233,35 @@ public class Menu {
 
     public void startGame() {
         boolean keepPlaying = false;
-        int nbOfCases = 64;
         int currentCase;
         int diceResult;
+        Scanner sc = new Scanner(System.in);
+
+        GameBoard gB = new GameBoard();
 
         do {
           currentCase = 1;
 
-          while(currentCase < nbOfCases){
+          while(currentCase < GameBoard.NB_OF_SPACES){
               diceResult = diceRoll();
               System.out.println("Rolled dice: " + diceResult);
 
               try {
-                  currentCase = move(nbOfCases, currentCase, diceResult);
+                  currentCase = move(GameBoard.NB_OF_SPACES, currentCase, diceResult);
               } catch (CharacterOutOfBoardException cob){
                   System.out.println(cob.getMessage());
                   currentCase = 1;
               }
 
-              System.out.println("Current case: " + currentCase + "/" + nbOfCases);
+              System.out.println("Current case: " + currentCase + "/" + GameBoard.NB_OF_SPACES);
+              System.out.println(gB.getCurrentSpace(currentCase).toString());
+
+              sc.nextLine();
           }
 
           System.out.println("Congratulations, you did it!" +
                   "\n\nDo you want to play again? (Y/n)");
 
-          Scanner sc = new Scanner(System.in);
           String userInput = sc.nextLine();
 
           if(userInput.toLowerCase().equals("y") || userInput.toLowerCase().equals("yes")){
@@ -264,8 +269,6 @@ public class Menu {
           } else if (!userInput.toLowerCase().equals("n") && !userInput.toLowerCase().equals("no")){
               System.out.println("Fuck it, I don't wanna take every option into account before refactoring.");
           }
-
-          keepPlaying = false;
 
         } while(keepPlaying);
     }
