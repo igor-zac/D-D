@@ -1,10 +1,11 @@
-package com.warriors.characters;
+package com.warriors.characters.heroes;
 
+import com.warriors.characters.Character;
 import com.warriors.equipments.offense.Spell;
 import com.warriors.equipments.defense.Philter;
 
 
-public class Magician extends Character {
+public class Magician extends Hero {
 
     public static final int MIN_LIFE = 3;
     public static final int MAX_LIFE = 6;

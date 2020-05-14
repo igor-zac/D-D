@@ -1,10 +1,11 @@
-package com.warriors.characters;
+package com.warriors.characters.heroes;
 
+import com.warriors.characters.Character;
 import com.warriors.equipments.offense.Weapon;
 import com.warriors.equipments.defense.Shield;
 
 
-public class Warrior extends Character {
+public class Warrior extends Hero {
 
     public static final int MIN_LIFE = 5;
     public static final int MAX_LIFE = 10;
