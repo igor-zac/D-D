@@ -1,29 +1,30 @@
-package com.D_D;
+package com.warriors;
 
 
 public class Main {
 
-    private boolean playing = true;
-
     public static void main(String[] args){
-        gameStart();
+        Main game = new Main();
+
+        game.start();
 
         Menu menu = new Menu();
         menu.createCharacter();
         menu.startGame();
 
-        gameEnd();
+        game.stop();
     }
 
-    private static void gameStart(){
+    private void start(){
         String welcomingMsg = "Welcome to Dungeons and Dragons adventurer!\n";
 
-        System.out.println(welcomingMsg);
+        System.out.println("Welcome to Dungeons and Dragons adventurer!\n");
     }
 
-    private static void gameEnd(){
+    private void stop(){
         String goodbyeMsg = "It was nice having you here. Farewell adventurer, and may destiny always walk by your side...";
 
         System.out.println(goodbyeMsg);
     }
+
 }
