@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class GameBoard {
 
-    private final int NB_OF_SPACES = 64;
+    public final int NB_OF_SPACES = 64;
     private HashMap<Integer, Space> track = new HashMap<Integer, Space>();
 
     private final int[] dragonSpaces = {45, 52, 56, 62};
@@ -17,7 +17,7 @@ public class GameBoard {
     private final int[] maces = {2, 11, 5, 22, 38};
     private final int[] swords = {19, 26, 42, 53};
     private final int[] thunderbolts = {1, 4, 8, 17, 23};
-    private final int[] firebolts = {48, 49};
+    private final int[] fireballs = {48, 49};
     private final int[] stdPotions = {7, 13, 31, 33, 39, 43};
     private final int[] bigPotions = {28, 41};
 
@@ -35,7 +35,7 @@ public class GameBoard {
             put("mace", maces);
             put("sword", swords);
             put("thunderbolt", thunderbolts);
-            put("fireball", firebolts);
+            put("fireball", fireballs);
             put("stdPotion", stdPotions);
             put("bigPotion", bigPotions);
         }
@@ -105,4 +105,5 @@ public class GameBoard {
     public Space getCurrentSpace(int currentSpace) {
         return this.track.get(currentSpace);
     }
+
 }

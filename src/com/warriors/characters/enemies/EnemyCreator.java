@@ -9,7 +9,7 @@ public class EnemyCreator {
     }
 
     public EnemyCreator(String type){
-        this.type = type;
+        this.type = type.toLowerCase();
     }
 
     public Enemy create(){
@@ -26,7 +26,7 @@ public class EnemyCreator {
     }
 
     public void setType(String type){
-        this.type = type;
+        this.type = type.toLowerCase();
     }
 
     private Dragon createDragon(){

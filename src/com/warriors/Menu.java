@@ -242,18 +242,18 @@ public class Menu {
         do {
           currentCase = 1;
 
-          while(currentCase < GameBoard.NB_OF_SPACES){
+          while(currentCase < gB.NB_OF_SPACES){
               diceResult = diceRoll();
               System.out.println("Rolled dice: " + diceResult);
 
               try {
-                  currentCase = move(GameBoard.NB_OF_SPACES, currentCase, diceResult);
+                  currentCase = move(gB.NB_OF_SPACES, currentCase, diceResult);
               } catch (CharacterOutOfBoardException cob){
                   System.out.println(cob.getMessage());
                   currentCase = 1;
               }
 
-              System.out.println("Current case: " + currentCase + "/" + GameBoard.NB_OF_SPACES);
+              System.out.println("Current case: " + currentCase + "/" + gB.NB_OF_SPACES);
               System.out.println(gB.getCurrentSpace(currentCase).toString());
 
               sc.nextLine();
