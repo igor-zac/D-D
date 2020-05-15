@@ -6,24 +6,22 @@ import com.warriors.equipments.defense.Philter;
 
 public class Magician extends Hero {
 
-    public static final int MIN_LIFE = 3;
-    public static final int MAX_LIFE = 6;
-
-    public static final int MIN_STRENGTH = 8;
-    public static final int MAX_STRENGTH = 15;
-
     // CONSTRUCTORS ===================================================================================================
 
     public Magician(){
-        this("", Magician.MIN_LIFE, Magician.MIN_STRENGTH);
+        this("", 0, 0);
     }
 
     public Magician(String name){
-        this(name, Magician.MIN_LIFE, Magician.MIN_STRENGTH);
+        this(name, 0, 0);
     }
 
     public Magician(String name, int lifeLevel, int strength){
         super(name);
+
+        this.setupClassLifeLimits();
+        this.setupClassStrengthLimits();
+
         this.setLifeLevel(lifeLevel);
         this.setStrength(strength);
     }
@@ -38,77 +36,14 @@ public class Magician extends Hero {
         super.setDefensiveEquipment(philter);
     }
 
-    @Override
-    public void setStrength(int strength){
-
-        int characterStrength;
-
-        if (strength >= Magician.MIN_STRENGTH && strength <= Magician.MAX_STRENGTH){
-            characterStrength = strength;
-        } else if (strength < Magician.MIN_STRENGTH) {
-            characterStrength = Magician.MIN_STRENGTH;
-        } else {
-            characterStrength = Magician.MAX_STRENGTH;
-        }
-
-        if(this.data.containsKey("strength")) {
-            this.data.replace("strength", characterStrength);
-        } else {
-            this.data.put("strength", characterStrength);
-        }
-
+    protected void setupClassLifeLimits(){
+        this.lifeLimits[0] = 3;
+        this.lifeLimits[1] = 6;
     }
 
-    @Override
-    public void setLifeLevel(int lifeLevel) {
-
-        int characterLifeLevel;
-
-        if (lifeLevel >= Magician.MIN_LIFE && lifeLevel <= Magician.MAX_LIFE){
-            characterLifeLevel = lifeLevel;
-        } else if (lifeLevel < Magician.MIN_LIFE) {
-            characterLifeLevel = Magician.MIN_LIFE;
-        } else {
-            characterLifeLevel = Magician.MAX_LIFE;
-        }
-
-        if(this.data.containsKey("lifeLevel")) {
-            this.data.replace("lifeLevel", characterLifeLevel);
-        } else {
-            this.data.put("lifeLevel", characterLifeLevel);
-        }
-
-    }
-
-    // CUSTOM METHODS =================================================================================================
-
-    @Override
-    public void gainLife(int lifeGained){
-        int characterLifeLevel = (int)this.data.get("lifeLevel");
-
-        if (characterLifeLevel + lifeGained > Magician.MAX_LIFE){
-            characterLifeLevel = Magician.MAX_LIFE;
-        } else {
-            characterLifeLevel += lifeGained;
-        }
-
-        this.data.replace("lifeLevel", characterLifeLevel);
-
-    }
-
-    @Override
-    public void loseLife(int lifeLost){
-        int characterLifeLevel = (int)this.data.get("lifeLevel");
-
-        if (characterLifeLevel - lifeLost < Magician.MIN_LIFE){
-            characterLifeLevel = Magician.MIN_LIFE;
-        } else {
-            characterLifeLevel -= lifeLost;
-        }
-
-        this.data.replace("lifeLevel", characterLifeLevel);
-
-
+    protected void setupClassStrengthLimits(){
+        this.strengthLimits[0] = 8;
+        this.strengthLimits[1] = 15;
     }
 
 }

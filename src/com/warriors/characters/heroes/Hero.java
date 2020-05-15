@@ -10,6 +10,9 @@ public abstract class Hero extends Character{
 
     private final int id;
 
+    protected int[] lifeLimits = new int[2];
+    protected int[] strengthLimits = new int[2];
+
     protected OffensiveEquipment offensiveEquipment;
     protected DefensiveEquipment defensiveEquipment;
 
@@ -65,6 +68,22 @@ public abstract class Hero extends Character{
         return this.defensiveEquipment;
     }
 
+    public int getLifeMin(){
+        return this.lifeLimits[0];
+    }
+
+    public int getLifeMax(){
+        return this.lifeLimits[1];
+    }
+
+    public int getStrengthMin(){
+        return this.strengthLimits[0];
+    }
+
+    public int getStrengthMax(){
+        return this.strengthLimits[1];
+    }
+
     // SETTERS ========================================================================================================
 
     public void setOffensiveEquipment(OffensiveEquipment offensiveEquipment){
@@ -86,4 +105,82 @@ public abstract class Hero extends Character{
             this.data.put("name", "");
         }
     }
+
+    @Override
+    public void setStrength(int strength){
+
+        int characterStrength;
+
+        if (strength >= this.getStrengthMin() && strength <= this.getStrengthMax()){
+            characterStrength = strength;
+        } else if (strength > this.getStrengthMax()) {
+            characterStrength = this.getStrengthMax();
+        } else {
+            characterStrength = this.getStrengthMin();
+        }
+
+        if(this.data.containsKey("strength")) {
+            this.data.replace("strength", characterStrength);
+        } else {
+            this.data.put("strength", characterStrength);
+        }
+
+    }
+
+    @Override
+    public void setLifeLevel(int lifeLevel) {
+
+        int characterLifeLevel;
+
+        if (lifeLevel >= this.getLifeMin() && lifeLevel <= this.getLifeMax()){
+            characterLifeLevel = lifeLevel;
+        } else if (lifeLevel > this.getLifeMax()) {
+            characterLifeLevel = this.getLifeMax();
+        } else {
+            characterLifeLevel = this.getLifeMin();
+        }
+
+        if(this.data.containsKey("lifeLevel")) {
+            this.data.replace("lifeLevel", characterLifeLevel);
+        } else {
+            this.data.put("lifeLevel", characterLifeLevel);
+        }
+
+    }
+
+    protected abstract void setupClassLifeLimits();
+
+    protected abstract void setupClassStrengthLimits();
+
+    // CUSTOM METHODS =================================================================================================
+
+    @Override
+    public void gainLife(int lifeGained){
+        int characterLifeLevel = (int)this.data.get("lifeLevel");
+
+        if (characterLifeLevel + lifeGained > this.getLifeMax()){
+            characterLifeLevel = this.getLifeMax();
+        } else {
+            characterLifeLevel += lifeGained;
+        }
+
+        this.data.replace("lifeLevel", characterLifeLevel);
+
+    }
+
+    @Override
+    public void loseLife(int lifeLost){
+        int characterLifeLevel = (int)this.data.get("lifeLevel");
+
+        if (characterLifeLevel - lifeLost < this.getLifeMin()){
+            characterLifeLevel = this.getLifeMin();
+        } else {
+            characterLifeLevel -= lifeLost;
+        }
+
+        this.data.replace("lifeLevel", characterLifeLevel);
+
+
+    }
+
 }
