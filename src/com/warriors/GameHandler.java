@@ -38,11 +38,13 @@ public class GameHandler {
         int currentCase;
         int diceResult;
 
-        this.initDebugMode();
+        if(Main.DEBUG){
+            this.initDebugMode();
+        }
 
 
         do {
-            currentCase = 1;
+            currentCase = 0;
 
             while(currentCase < board.NB_OF_SPACES){
                 diceResult = (Main.DEBUG ? debugValue() : diceRoll());
@@ -52,10 +54,10 @@ public class GameHandler {
                     currentCase = move(board.NB_OF_SPACES, currentCase, diceResult);
                 } catch (CharacterOutOfBoardException cob){
                     System.out.println(cob.getMessage());
-                    currentCase = 1;
+                    currentCase = 0;
                 }
 
-                System.out.println("Current case: " + currentCase + "/" + board.NB_OF_SPACES);
+                System.out.println("Current case: " + (currentCase + 1) + "/" + board.NB_OF_SPACES);
                 System.out.println(board.getCurrentSpace(currentCase).toString());
 
                 this.scanner.nextLine();
@@ -88,7 +90,7 @@ public class GameHandler {
     }
 
     private int move(int nbOfCases, int currentCase, int diceResult) throws CharacterOutOfBoardException {
-        if(currentCase + diceResult > nbOfCases){
+        if(currentCase + diceResult >= nbOfCases){
             throw new CharacterOutOfBoardException();
         } else {
             return currentCase + diceResult;

@@ -4,40 +4,32 @@ import com.warriors.characters.enemies.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class GameBoard {
 
     public final int NB_OF_SPACES = 64;
     private HashMap<Integer, Space> track = new HashMap<Integer, Space>();
 
-    private final int[] dragonSpaces = {45, 52, 56, 62};
-    private final int[] sorcererSpaces = {10, 20, 25, 32, 35, 36, 37, 40, 44, 47};
-    private final int[] goblinSpaces = {3, 6, 9, 12, 15, 18, 21, 24, 27, 30};
-
-    private final int[] maces = {2, 11, 5, 22, 38};
-    private final int[] swords = {19, 26, 42, 53};
-    private final int[] thunderbolts = {1, 4, 8, 17, 23};
-    private final int[] fireballs = {48, 49};
-    private final int[] stdPotions = {7, 13, 31, 33, 39, 43};
-    private final int[] bigPotions = {28, 41};
-
-
-    private Map<String, int[]> enemies = new HashMap<String, int[]>() {
+    private Map<String, Map<String, Integer>> boardContent = new HashMap<String, Map<String, Integer>>(){
         {
-            put("dragon", dragonSpaces);
-            put("sorcerer", sorcererSpaces);
-            put("goblin", goblinSpaces);
-        }
-    };
-
-    private Map<String, int[]> items = new HashMap<String, int[]>() {
-        {
-            put("mace", maces);
-            put("sword", swords);
-            put("thunderbolt", thunderbolts);
-            put("fireball", fireballs);
-            put("stdPotion", stdPotions);
-            put("bigPotion", bigPotions);
+            put("enemies", new HashMap<String, Integer>(){
+                {
+                    put("dragon", 4);
+                    put("sorcerer", 10);
+                    put("goblin", 10);
+                }
+            });
+            put("items", new HashMap<String, Integer>(){
+                {
+                    put("mace", 5);
+                    put("sword", 4);
+                    put("thunderbolt", 5);
+                    put("fireball", 2);
+                    put("stdPotion", 6);
+                    put("bigPotion", 2);
+                }
+            });
         }
     };
 
@@ -46,59 +38,57 @@ public class GameBoard {
         setupSpaces();
         setupEnemies();
         setupItems();
+
     }
 
     private void setupSpaces() {
-        for (int i = 1; i <= this.NB_OF_SPACES; i++) {
+        for (int i = 0; i < this.NB_OF_SPACES; i++) {
             Space space = new Space();
             track.put(i, space);
         }
+
     }
 
     private void setupEnemies() {
         EnemyCreator enemyCreator = new EnemyCreator();
 
-        for (String enemyType : enemies.keySet()) {
+        for (String enemyType : this.boardContent.get("enemies").keySet()) {
 
             enemyCreator.setType(enemyType);
+            Space space;
+            int nbToSetup = 0;
+            Random rand = new Random();
 
-            for (int space : enemies.get(enemyType)) {
+            while (nbToSetup < this.boardContent.get("enemies").get(enemyType)) {
 
-                Enemy enemy = enemyCreator.create();
-                track.get(space).setEnemy(enemy);
-
+                space = track.get(rand.nextInt(track.size()));
+                if(space.isEmpty()) {
+                    Enemy enemy = enemyCreator.create();
+                    space.setEnemy(enemy);
+                    nbToSetup++;
+                }
             }
         }
     }
 
     private void setupItems() {
-        for (String item : items.keySet()) {
-            String itemType = "";
+        for (String item : this.boardContent.get("items").keySet()) {
 
-            switch (item) {
-                case "mace":
-                    itemType = item;
-                    break;
-                case "sword":
-                    itemType = item;
-                    break;
-                case "thunderbolt":
-                    itemType = item;
-                    break;
-                case "fireball":
-                    itemType = item;
-                    break;
-                case "stdPotion":
-                    itemType = item;
-                    break;
-                case "bigPotion":
-                    itemType = item;
-                    break;
+            Space space;
+            int nbToSetup = 0;
+            Random rand = new Random();
+
+            while(nbToSetup < this.boardContent.get("items").get(item)){
+
+                space = track.get(rand.nextInt(track.size()));
+
+                if(space.isEmpty()) {
+                    space.setItem(item);
+                    nbToSetup++;
+                }
+
             }
 
-            for (int space : items.get(item)) {
-                track.get(space).setItem(itemType);
-            }
         }
     }
 

@@ -44,4 +44,8 @@ public class Space {
             this.enemy = enemy;
         }
     }
+
+    public boolean isEmpty(){
+        return this.isEmpty;
+    }
 }
