@@ -20,6 +20,9 @@ public class CharacterCreationHandler {
     final private String[] characterOptions = {"Character Choice", "Name", "Life Level", "Strength"};
 
 
+    /**
+     * Default constructor
+     */
     public CharacterCreationHandler() {
         this.scanner = new Scanner(System.in);
         this.narrator = new CLICreationNarrator();
@@ -27,6 +30,11 @@ public class CharacterCreationHandler {
         this.creator = new HeroCreator();
     }
 
+    /**
+     *
+     * @return createdHero
+     * @throws UserWantsToQuitException
+     */
     public Hero registerCharacter() throws UserWantsToQuitException {
 
         this.narrator.narrate("Welcome");

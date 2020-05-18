@@ -13,6 +13,12 @@ public class InputValidator {
     final private String[] displayOptions = {"show"};
 
 
+    /**
+     *
+     * @param optionToValidate
+     * @param userInput
+     * @return boolean isValid
+     */
     public boolean validate(String optionToValidate, String userInput) {
         boolean isInputValid = false;
         userInput = userInput.toLowerCase();
@@ -63,6 +69,10 @@ public class InputValidator {
         return isInputValid;
     }
 
+    /**
+     *
+     * @param hero
+     */
     public void setHeroType(Hero hero){
         this.hero = hero;
     }

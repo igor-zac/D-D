@@ -1,4 +1,4 @@
-package com.warriors.equipments;
+package com.warriors.items.equipments;
 
 public abstract class Equipment {
 
@@ -14,10 +14,18 @@ public abstract class Equipment {
 
     // GETTERS ========================================================================================================
 
+    /**
+     *
+     * @return String name
+     */
     public String getName(){
         return this.name;
     }
 
+    /**
+     *
+     * @return String type
+     */
     public String getType(){
         return this.type;
     }

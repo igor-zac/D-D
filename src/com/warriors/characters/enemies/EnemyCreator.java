@@ -4,14 +4,25 @@ public class EnemyCreator {
 
     private String type;
 
+    /**
+     * Default constructor
+     */
     public EnemyCreator() {
 
     }
 
+    /**
+     *
+     * @param type
+     */
     public EnemyCreator(String type){
         this.type = type.toLowerCase();
     }
 
+    /**
+     *
+     * @return Enemy enemy
+     */
     public Enemy create(){
         switch (this.type){
             case "dragon":
@@ -25,6 +36,10 @@ public class EnemyCreator {
         }
     }
 
+    /**
+     *
+     * @param type
+     */
     public void setType(String type){
         this.type = type.toLowerCase();
     }

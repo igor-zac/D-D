@@ -1,6 +1,6 @@
-package com.warriors.equipments.offense;
+package com.warriors.items.equipments.offense;
 
-import com.warriors.equipments.Equipment;
+import com.warriors.items.equipments.Equipment;
 
 public abstract class OffensiveEquipment extends Equipment {
 
@@ -25,6 +25,10 @@ public abstract class OffensiveEquipment extends Equipment {
 
     // GETTERS ========================================================================================================
 
+    /**
+     *
+     * @return int Strength
+     */
     public int getStrength(){
         return this.strength;
     }

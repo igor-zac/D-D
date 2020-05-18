@@ -7,6 +7,10 @@ public class Main {
     public static String debugFileName = "";
 
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args){
         if(args != null && args.length>0) {
             initDebug(args);

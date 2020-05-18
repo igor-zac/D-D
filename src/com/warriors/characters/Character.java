@@ -8,16 +8,28 @@ public abstract class Character {
 
     // GETTERS ========================================================================================================
 
+    /**
+     *
+     * @return int LifeLevel
+     */
     public int getLifeLevel(){
         return (int) this.data.get("lifeLevel");
     }
 
+    /**
+     *
+     * @return int Strength
+     */
     public int getStrength() {
         return (int) this.data.get("strength");
     }
 
     // SETTERS ========================================================================================================
 
+    /**
+     *
+     * @param strength
+     */
     public void setStrength(int strength){
         if (strength > 0){
             this.data.replace("strength", strength);
@@ -26,6 +38,10 @@ public abstract class Character {
         }
     }
 
+    /**
+     *
+     * @param lifeLevel
+     */
     public void setLifeLevel(int lifeLevel){
         if (lifeLevel > 0){
             this.data.replace("lifeLevel", lifeLevel);
@@ -36,12 +52,20 @@ public abstract class Character {
 
     // CUSTOM METHODS =================================================================================================
 
+    /**
+     *
+     * @param lifeGained
+     */
     public void gainLife(int lifeGained){
        int characterLifeLevel = (int)this.data.get("lifeLevel");
        characterLifeLevel += lifeGained;
        this.data.replace("lifeLevel", characterLifeLevel);
     }
 
+    /**
+     *
+     * @param lifeLost
+     */
     public void loseLife(int lifeLost){
         int characterLifeLevel = (int)this.data.get("lifeLevel");
         characterLifeLevel -= lifeLost;

@@ -10,6 +10,9 @@ public abstract class Enemy extends Character{
 
     // CONSTRUCTORS ===================================================================================================
 
+    /**
+     * Default constructor
+     */
     protected Enemy(){
 
         this.id = Enemy.enemyId;
@@ -29,6 +32,10 @@ public abstract class Enemy extends Character{
 
     // GETTERS ========================================================================================================
 
+    /**
+     *
+     * @return int id
+     */
     public int getId(){
         return this.id;
     }

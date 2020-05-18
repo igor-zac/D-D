@@ -6,6 +6,10 @@ public class CLICreationNarrator {
 
     private Hero hero;
 
+    /**
+     *
+     * @param partToTell
+     */
     public void narrate(String partToTell) {
 
         System.out.println();

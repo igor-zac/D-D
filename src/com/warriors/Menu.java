@@ -19,6 +19,10 @@ public class Menu {
         this.gameHandler = new GameHandler();
     }
 
+    /**
+     * Method starting the menu and everything else
+     * Game start and character creation are called from here
+     */
     public void start(){
         while(this.playerList.size() == 0){
             System.out.println("There are no adventurers registered yet, so let's add yourself to the party!");

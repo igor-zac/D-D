@@ -1,6 +1,10 @@
 package com.warriors.game.board;
 
 import com.warriors.characters.enemies.*;
+import com.warriors.items.consumables.Consumable;
+import com.warriors.items.consumables.ConsumableCreator;
+import com.warriors.items.equipments.EquipmentCreator;
+import com.warriors.items.equipments.offense.OffensiveEquipment;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,12 +24,16 @@ public class GameBoard {
                     put("goblin", 10);
                 }
             });
-            put("items", new HashMap<String, Integer>(){
+            put("equipment", new HashMap<String, Integer>(){
                 {
                     put("mace", 5);
                     put("sword", 4);
                     put("thunderbolt", 5);
                     put("fireball", 2);
+                }
+            });
+            put("items", new HashMap<String, Integer>(){
+                {
                     put("stdPotion", 6);
                     put("bigPotion", 2);
                 }
@@ -34,9 +42,13 @@ public class GameBoard {
     };
 
 
+    /**
+     * Default constructor
+     */
     public GameBoard() {
         setupSpaces();
         setupEnemies();
+        setupEquipment();
         setupItems();
 
     }
@@ -71,9 +83,37 @@ public class GameBoard {
         }
     }
 
-    private void setupItems() {
+    private void setupEquipment() {
+        EquipmentCreator equipmentCreator = new EquipmentCreator();
+
+        for (String equipment : this.boardContent.get("equipment").keySet()) {
+
+            equipmentCreator.setType(equipment);
+            Space space;
+            int nbToSetup = 0;
+            Random rand = new Random();
+
+            while(nbToSetup < this.boardContent.get("equipment").get(equipment)){
+
+                space = track.get(rand.nextInt(track.size()));
+
+                if(space.isEmpty()) {
+                    OffensiveEquipment OE = equipmentCreator.create();
+                    space.setEquipment(OE);
+                    nbToSetup++;
+                }
+
+            }
+
+        }
+    }
+
+    private void setupItems(){
+        ConsumableCreator consCreator = new ConsumableCreator();
+
         for (String item : this.boardContent.get("items").keySet()) {
 
+            consCreator.setType(item);
             Space space;
             int nbToSetup = 0;
             Random rand = new Random();
@@ -83,7 +123,9 @@ public class GameBoard {
                 space = track.get(rand.nextInt(track.size()));
 
                 if(space.isEmpty()) {
-                    space.setItem(item);
+
+                    Consumable consumable = consCreator.create();
+                    space.setItem(consumable);
                     nbToSetup++;
                 }
 
@@ -92,6 +134,11 @@ public class GameBoard {
         }
     }
 
+    /**
+     *
+     * @param currentSpace
+     * @return Space currentSpace
+     */
     public Space getCurrentSpace(int currentSpace) {
         return this.track.get(currentSpace);
     }

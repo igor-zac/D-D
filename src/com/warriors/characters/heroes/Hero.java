@@ -1,10 +1,13 @@
 package com.warriors.characters.heroes;
 
 import com.warriors.characters.Character;
-import com.warriors.equipments.defense.DefensiveEquipment;
-import com.warriors.equipments.offense.OffensiveEquipment;
+import com.warriors.items.equipments.defense.DefensiveEquipment;
+import com.warriors.items.equipments.offense.OffensiveEquipment;
+
+import java.util.HashMap;
 
 public abstract class Hero extends Character{
+
 
     public final static String[] availableHeroes = {"Warrior", "Magician"};
 
@@ -20,6 +23,10 @@ public abstract class Hero extends Character{
 
     // CONSTRUCTORS ===================================================================================================
 
+    /**
+     *
+     * @param name
+     */
     protected Hero(String name){
 
         this.id = Hero.heroId;
@@ -54,52 +61,96 @@ public abstract class Hero extends Character{
 
     // GETTERS ========================================================================================================
 
+    /**
+     *
+     * @return int id
+     */
     public int getId(){
         return this.id;
     }
 
+    /**
+     *
+     * @return String name
+     */
     public String getName(){
         return (String)this.data.get("name");
     }
 
+    /**
+     *
+     * @return OffensiveEquipment offensiveEquipment
+     */
     public OffensiveEquipment getOffensiveEquipment() {
         return this.offensiveEquipment;
     }
 
+    /**
+     *
+     * @return OffensiveEquipment offensiveEquipment
+     */
     public DefensiveEquipment getDefensiveEquipment(){
         return this.defensiveEquipment;
     }
 
+    /**
+     *
+     * @return int LifeMin
+     */
     public int getLifeMin(){
         return this.lifeLimits[0];
     }
 
+    /**
+     *
+     * @return int lifeMax
+     */
     public int getLifeMax(){
         return this.lifeLimits[1];
     }
 
+    /**
+     *
+     * @return int strengthMin
+     */
     public int getStrengthMin(){
         return this.strengthLimits[0];
     }
 
+    /**
+     *
+     * @return int strengthMax
+     */
     public int getStrengthMax(){
         return this.strengthLimits[1];
     }
 
     // SETTERS ========================================================================================================
 
+    /**
+     *
+     * @param offensiveEquipment
+     */
     public void setOffensiveEquipment(OffensiveEquipment offensiveEquipment){
         if(offensiveEquipment != null){
             this.offensiveEquipment = offensiveEquipment;
         }
     }
 
+    /**
+     *
+     * @param defensiveEquipment
+     */
     public void setDefensiveEquipment(DefensiveEquipment defensiveEquipment){
         if(defensiveEquipment != null){
             this.defensiveEquipment = defensiveEquipment;
         }
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name){
         if(name != null){
             this.data.put("name", name);
@@ -108,6 +159,10 @@ public abstract class Hero extends Character{
         }
     }
 
+    /**
+     *
+     * @param strength
+     */
     @Override
     public void setStrength(int strength){
 
@@ -129,6 +184,10 @@ public abstract class Hero extends Character{
 
     }
 
+    /**
+     *
+     * @param lifeLevel
+     */
     @Override
     public void setLifeLevel(int lifeLevel) {
 
@@ -156,6 +215,10 @@ public abstract class Hero extends Character{
 
     // CUSTOM METHODS =================================================================================================
 
+    /**
+     *
+     * @param lifeGained
+     */
     @Override
     public void gainLife(int lifeGained){
         int characterLifeLevel = (int)this.data.get("lifeLevel");
@@ -170,6 +233,10 @@ public abstract class Hero extends Character{
 
     }
 
+    /**
+     *
+     * @param lifeLost
+     */
     @Override
     public void loseLife(int lifeLost){
         int characterLifeLevel = (int)this.data.get("lifeLevel");
@@ -181,7 +248,6 @@ public abstract class Hero extends Character{
         }
 
         this.data.replace("lifeLevel", characterLifeLevel);
-
 
     }
 

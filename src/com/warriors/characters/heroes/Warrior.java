@@ -1,21 +1,34 @@
 package com.warriors.characters.heroes;
 
-import com.warriors.equipments.offense.Weapon;
-import com.warriors.equipments.defense.Shield;
+import com.warriors.items.equipments.offense.Weapon;
+import com.warriors.items.equipments.defense.Shield;
 
 
 public class Warrior extends Hero {
 
     // CONSTRUCTORS ===================================================================================================
 
+    /**
+     * Default constructor
+     */
     public Warrior(){
         this("", 0, 0);
     }
 
+    /**
+     *
+     * @param name
+     */
     public Warrior(String name){
         this(name, 0, 0);
     }
 
+    /**
+     *
+     * @param name
+     * @param lifeLevel
+     * @param strength
+     */
     public Warrior(String name, int lifeLevel, int strength){
         super(name);
 
@@ -28,10 +41,18 @@ public class Warrior extends Hero {
 
     // SETTERS ========================================================================================================
 
+    /**
+     *
+     * @param weapon
+     */
     public void setOffensiveEquipment(Weapon weapon){
         super.setOffensiveEquipment(weapon);
     }
 
+    /**
+     *
+     * @param shield
+     */
     public void setDefensiveEquipment(Shield shield){
         super.setDefensiveEquipment(shield);
     }

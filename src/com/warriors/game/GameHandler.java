@@ -12,6 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class GameHandler {
 
     private ArrayList<Hero> playerList;
@@ -21,20 +22,34 @@ public class GameHandler {
     private List<Integer> DebugArray;
     private Iterator debugIterator;
 
+    /**
+     * Default constructor
+     */
     public GameHandler(){
         this(null);
     }
 
+    /**
+     *
+     * @param playerList
+     */
     public GameHandler(ArrayList<Hero> playerList){
         this.playerList = playerList;
         this.board = new GameBoard();
         this.scanner = new Scanner(System.in);
     }
 
+    /**
+     *
+     * @param playerList
+     */
     public void setPlayerList(ArrayList<Hero> playerList){
         this.playerList = playerList;
     }
 
+    /**
+     * Method starting the game
+     */
     public void startGame(){
         boolean keepPlaying = false;
         int currentCase;
@@ -58,6 +73,7 @@ public class GameHandler {
                     System.out.println(cob.getMessage());
                     currentCase = 0;
                 }
+
 
                 System.out.println("Current case: " + (currentCase + 1) + "/" + board.NB_OF_SPACES);
                 System.out.println(board.getCurrentSpace(currentCase).toString());
@@ -91,6 +107,14 @@ public class GameHandler {
         }
     }
 
+    /**
+     *
+     * @param nbOfCases
+     * @param currentCase
+     * @param diceResult
+     * @return newPosition
+     * @throws CharacterOutOfBoardException
+     */
     private int move(int nbOfCases, int currentCase, int diceResult) throws CharacterOutOfBoardException {
         if(currentCase + diceResult >= nbOfCases){
             throw new CharacterOutOfBoardException();
@@ -122,5 +146,7 @@ public class GameHandler {
 
        this.debugIterator = DebugArray.iterator();
     }
+
+
 
 }
