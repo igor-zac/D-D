@@ -9,7 +9,7 @@ public class Main {
         game.start();
 
         Menu menu = new Menu();
-        menu.startGame();
+        menu.start();
 //        menu.startGame();
 
         game.stop();

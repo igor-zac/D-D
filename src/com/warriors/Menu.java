@@ -8,14 +8,14 @@ import java.util.ArrayList;
 public class Menu {
 
     private CharacterCreationHandler creationHandler;
-    private ArrayList<Hero> heroList = new ArrayList<Hero>();
+    private ArrayList<Hero> playerList = new ArrayList<Hero>();
 
     public Menu(){
         this.creationHandler = new CharacterCreationHandler();
     }
 
-    public void (){
-        while(this.heroList.size() == 0){
+    public void start(){
+        while(this.playerList.size() == 0){
             System.out.println("There are no adventurers registered yet, so let's add yourself to the party!");
             this.addCharacter();
         }
@@ -27,7 +27,7 @@ public class Menu {
         Hero myHero = this.creationHandler.registerCharacter();
 
         if(myHero != null){
-            this.heroList.add(myHero);
+            this.playerList.add(myHero);
         }
     }
 

@@ -6,6 +6,8 @@ import com.warriors.equipments.offense.OffensiveEquipment;
 
 public abstract class Hero extends Character{
 
+    public final static String[] availableHeroes = {"Warrior", "Magician"};
+
     private static int heroId = 1;
 
     private final int id;
