@@ -25,7 +25,7 @@ public class CharacterCreationHandler {
         this.creator = new HeroCreator();
     }
 
-    public Hero registerCharacter() {
+    public Hero registerCharacter() throws userWantsToQuitException {
 
         this.narrator.narrate("Welcome");
 
@@ -38,8 +38,6 @@ public class CharacterCreationHandler {
                     setupCharacterOption(characterOptions[i]);
                 } catch (userWantsRecapException uWRE) {
                     i--;
-                } catch (userWantsToQuitException uWTQ){
-                    return null;
                 }
             }
 
@@ -84,7 +82,7 @@ public class CharacterCreationHandler {
 
         switch (option) {
             case "Character Choice":
-                this.creator.setType(Integer.parseInt(userInput));
+                this.creator.setType(Integer.parseInt(userInput)-1);
                 this.hero = creator.create();
 
                 this.narrator.setHeroType(this.hero);
