@@ -1,4 +1,4 @@
-package com.warriors.board;
+package com.warriors.game.board;
 
 import com.warriors.characters.enemies.Enemy;
 

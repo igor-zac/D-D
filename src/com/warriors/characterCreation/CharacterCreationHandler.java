@@ -1,7 +1,9 @@
-package com.warriors;
+package com.warriors.characterCreation;
 
 import com.warriors.characters.heroes.Hero;
 import com.warriors.characters.heroes.HeroCreator;
+import com.warriors.customExceptions.UserWantsRecapException;
+import com.warriors.customExceptions.UserWantsToQuitException;
 
 import java.util.Scanner;
 
@@ -25,7 +27,7 @@ public class CharacterCreationHandler {
         this.creator = new HeroCreator();
     }
 
-    public Hero registerCharacter() throws userWantsToQuitException {
+    public Hero registerCharacter() throws UserWantsToQuitException {
 
         this.narrator.narrate("Welcome");
 
@@ -36,7 +38,7 @@ public class CharacterCreationHandler {
             for (int i = 0; i < characterOptions.length; i++) {
                 try {
                     setupCharacterOption(characterOptions[i]);
-                } catch (userWantsRecapException uWRE) {
+                } catch (UserWantsRecapException uWRE) {
                     i--;
                 }
             }
@@ -63,7 +65,7 @@ public class CharacterCreationHandler {
         return this.hero;
     }
 
-    private void setupCharacterOption(String option) throws userWantsRecapException, userWantsToQuitException {
+    private void setupCharacterOption(String option) throws UserWantsRecapException, UserWantsToQuitException {
 
         this.narrator.narrate(option);
 
@@ -102,19 +104,19 @@ public class CharacterCreationHandler {
 
     }
 
-    private void checkForNavigation(String userInput) throws userWantsRecapException, userWantsToQuitException{
+    private void checkForNavigation(String userInput) throws UserWantsRecapException, UserWantsToQuitException {
 
         if (validator.validate("Exit", userInput)) {
 
             narrator.narrate("Exit");
-            throw new userWantsToQuitException();
+            throw new UserWantsToQuitException();
 
         }
 
         if (validator.validate("Status", userInput)) {
 
             narrator.narrate("Status");
-            throw new userWantsRecapException();
+            throw new UserWantsRecapException();
         }
     }
 

@@ -1,6 +1,9 @@
 package com.warriors;
 
+import com.warriors.characterCreation.CharacterCreationHandler;
 import com.warriors.characters.heroes.Hero;
+import com.warriors.customExceptions.UserWantsToQuitException;
+import com.warriors.game.GameHandler;
 
 import java.util.ArrayList;
 
@@ -22,7 +25,7 @@ public class Menu {
 
             try{
                 this.addCharacter();
-            } catch (userWantsToQuitException uWTQ){
+            } catch (UserWantsToQuitException uWTQ){
                 return;
             }
         }
@@ -32,7 +35,7 @@ public class Menu {
 
     }
 
-    private void addCharacter() throws userWantsToQuitException{
+    private void addCharacter() throws UserWantsToQuitException {
         Hero myHero = this.creationHandler.registerCharacter();
 
         if(myHero != null){

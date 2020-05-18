@@ -1,7 +1,9 @@
-package com.warriors;
+package com.warriors.game;
 
-import com.warriors.board.GameBoard;
+import com.warriors.Main;
+import com.warriors.game.board.GameBoard;
 import com.warriors.characters.heroes.Hero;
+import com.warriors.customExceptions.CharacterOutOfBoardException;
 
 import java.io.File;
 import java.io.FileNotFoundException;

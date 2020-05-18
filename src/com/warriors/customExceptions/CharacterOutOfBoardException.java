@@ -1,4 +1,4 @@
-package com.warriors;
+package com.warriors.customExceptions;
 
 public class CharacterOutOfBoardException extends Exception{
 

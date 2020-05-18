@@ -1,4 +1,4 @@
-package com.warriors;
+package com.warriors.characterCreation;
 
 import com.warriors.characters.heroes.Hero;
 import com.warriors.characters.heroes.HeroCreator;
