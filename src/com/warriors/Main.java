@@ -9,8 +9,8 @@ public class Main {
         game.start();
 
         Menu menu = new Menu();
-        menu.createCharacter();
         menu.startGame();
+//        menu.startGame();
 
         game.stop();
     }
